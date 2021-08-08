@@ -1,0 +1,8 @@
+# tmp files
+**/.DS_Store
+**/__pycache__
+
+# kaldi files
+s5/data
+s5/exp
+s5/mfcc

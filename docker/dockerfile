@@ -1,0 +1,12 @@
+FROM kaldiasr/kaldi:gpu-latest
+
+# make sox compat with mp3 as commonvoice is in mp3 format
+apt update
+apt install -y libsox-fmt-mp3
+
+# install SRILM
+
+# install python3.8
+
+# install python dependencies
+

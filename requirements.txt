@@ -1,0 +1,2 @@
+pythainlp==2.3.1
+pandas
