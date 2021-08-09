@@ -146,9 +146,9 @@ if [ $stage -le 7 ]; then
 fi
 
 # train a chain model
-# if [ $stage -le 8 ]; then
-#   local/chain/run_tdnn.sh --stage 0
-# fi
+if [ $stage -le 8 ]; then
+  local/chain/run_tdnn.sh --stage 0
+fi
 
 # wait for jobs to finish
 wait
