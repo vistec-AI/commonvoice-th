@@ -1,12 +1,29 @@
 FROM kaldiasr/kaldi:gpu-latest
 
 # make sox compat with mp3 as commonvoice is in mp3 format
-apt update
-apt install -y libsox-fmt-mp3
+RUN apt update
+RUN apt install -y libsox-fmt-mp3 gawk
 
 # install SRILM
+COPY srilm.tar.gz /opt/kaldi/tools
+WORKDIR /opt/kaldi/tools
+RUN ./install_srilm.sh
 
 # install python3.8
+WORKDIR /root
+RUN apt install software-properties-common -y
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt update
+RUN apt install -y python3.8
+
+# install pip for python3.8
+RUN apt update
+RUN apt install -y curl python3.8-distutils
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN python3.8 get-pip.py
 
 # install python dependencies
+RUN pip3.8 install pandas pythainlp==2.3.1
 
+# back to workdir
+WORKDIR /opt/kaldi

@@ -2,6 +2,9 @@
 **/.DS_Store
 **/__pycache__
 
+# SRILM download
+**/srilm.tar.gz
+
 # kaldi files
 s5/data
 s5/exp
