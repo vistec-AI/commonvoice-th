@@ -37,17 +37,16 @@ $ ./run.sh --stage 0
 Here are some experiment results evaluated on dev set:
 |Model|dev WER|
 |:----|:----:|
-|mono|-%|
-|tri1|-%|
-|tri2a|-%|
-|tri2b|-%|
-|tri3b|-%|
-|tdnn-chain|-%|
+|mono|78.58%|
+|tri1|53.28%|
+|tri2b|47.47%|
+|tri3b|46.82%|
+|tdnn-chain|30.15%|
 
 Here is final `test` set result evaluated on `tdnn-chain`
 |Model|dev WER|test WER|
 |:----|:------|:------:|
-|tdnn-chain|-%|-%|
+|tdnn-chain|30.15%|23.41%|
 
 ## Author
 Chompakorn Chaksangchaichot
