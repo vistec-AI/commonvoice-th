@@ -29,7 +29,7 @@ Once you finish this step, you should be in a docker container's bash terminal n
 ## Usage
 To run the training pipeline, go to recipe directory and run `run.sh` script
 ```bash
-$ cd /opt/kaldi/egs/commonvoice-th
+$ cd /opt/kaldi/egs/commonvoice-th/s5
 $ ./run.sh --stage 0
 ```
 
