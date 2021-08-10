@@ -35,7 +35,7 @@ $ ./run.sh --stage 0
 
 ## Experiment Results
 Here are some experiment results evaluated on dev set:
-|Model            |     dev     | dev-unique  |
+|Model            |     dev    || dev-unique ||
 |                 | WER  |  CER | WER  |  CER |
 |:----------------|:----:|:----:|:----:|:----:|
 |mono             |77.85%|49.43%| TBD% | TBD% |
@@ -48,7 +48,7 @@ Here are some experiment results evaluated on dev set:
 
 Here is final `test` set result evaluated on `tdnn-chain`
 
-|Model            |    test     | test-unique |
+|Model            |    test    || test-unique||
 |                 | WER  |  CER | WER  |  CER |
 |:----------------|:----:|:----:|:----:|:----:|
 |tdnn-chain-online|29.99%| 7.89%|23.13%|7.54%|
