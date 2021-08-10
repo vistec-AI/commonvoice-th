@@ -35,20 +35,23 @@ $ ./run.sh --stage 0
 
 ## Experiment Results
 Here are some experiment results evaluated on dev set:
-|Model|dev WER|dev CER|
-|:----|:-----:|:-----:|
-|mono|77.85%|49.43%|
-|tri1|53.32%|28.26%|
-|tri2b|47.81%|21.94%|
-|tri3b|47.20%|21.77%|
-|tri4b|43.47%|18.33%|
-|tdnn-chain|30.66%|8.48%|
-|tdnn-chain-online|29.99%|7.89%|
+|Model            |     dev     | dev-unique  |
+|                 | WER  |  CER | WER  |  CER |
+|:----------------|:----:|:----:|:----:|:----:|
+|mono             |77.85%|49.43%| TBD% | TBD% |
+|tri1             |53.32%|28.26%| TBD% | TBD% |
+|tri2b            |47.81%|21.94%| TBD% | TBD% |
+|tri3b            |47.20%|21.77%| TBD% | TBD% |
+|tri4b            |43.47%|18.33%| TBD% | TBD% |
+|tdnn-chain       |30.66%| 8.48%| TBD% | TBD% |
+|tdnn-chain-online|29.99%| 7.89%| TBD% | TBD% |
 
 Here is final `test` set result evaluated on `tdnn-chain`
-|Model|dev WER|dev CER|test WER|test CER|
-|:----|:-----:|:-----:|:------:|:------:|
-|tdnn-chain-online|29.99%|7.89%|23.13%|7.54%|
+
+|Model            |    test     | test-unique |
+|                 | WER  |  CER | WER  |  CER |
+|:----------------|:----:|:----:|:----:|:----:|
+|tdnn-chain-online|29.99%| 7.89%|23.13%|7.54%|
 
 ## Author
 Chompakorn Chaksangchaichot
