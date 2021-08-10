@@ -35,23 +35,100 @@ $ ./run.sh --stage 0
 
 ## Experiment Results
 Here are some experiment results evaluated on dev set:
-|Model            |:    dev    :|:dev-unique :|
-|^^               | WER  |  CER | WER  |  CER |
-|:----------------|:----:|:----:|:----:|:----:|
-|mono             |77.85%|49.43%| TBD% | TBD% |
-|tri1             |53.32%|28.26%| TBD% | TBD% |
-|tri2b            |47.81%|21.94%| TBD% | TBD% |
-|tri3b            |47.20%|21.77%| TBD% | TBD% |
-|tri4b            |43.47%|18.33%| TBD% | TBD% |
-|tdnn-chain       |30.66%| 8.48%| TBD% | TBD% |
-|tdnn-chain-online|29.99%| 7.89%| TBD% | TBD% |
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Model</th>
+      <th colspan="2">dev</th>
+      <th colspan="2">dev-unique</th>
+    </tr>
+    <tr>
+      <th>WER</th>
+      <th>CER</th>
+      <th>WER</th>
+      <th>CER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>mono</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+    </tr>
+    <tr>
+      <td>tri1</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+    </tr>
+    <tr>
+      <td>tri2b</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+    </tr>
+    <tr>
+      <td>tri3b</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+    </tr>
+    <tr>
+      <td>tri4b</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+    </tr>
+    <tr>
+      <td>tdnn-chain</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+    </tr>
+    <tr>
+      <td>tdnn-chain-online</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+    </tr>
+  </tbody>
+</table>
 
 Here is final `test` set result evaluated on `tdnn-chain`
 
-|Model            |    test    || test-unique||
-|                 | WER  |  CER | WER  |  CER |
-|:----------------|:----:|:----:|:----:|:----:|
-|tdnn-chain-online|29.99%| 7.89%|23.13%|7.54%|
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Model</th>
+      <th colspan="2">dev</th>
+      <th colspan="2">dev-unique</th>
+    </tr>
+    <tr>
+      <th>WER</th>
+      <th>CER</th>
+      <th>WER</th>
+      <th>CER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>mono</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+      <td>TBD%</td>
+    </tr>
+  </tbody>
+</table> 
 
 ## Author
 Chompakorn Chaksangchaichot
