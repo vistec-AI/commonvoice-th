@@ -53,38 +53,38 @@ Here are some experiment results evaluated on dev set:
   <tbody>
     <tr>
       <td>mono</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
+      <td>79.13%</td>
+      <td>57.31%</td>
+      <td>77.79%</td>
+      <td>48.97%</td>
     </tr>
     <tr>
       <td>tri1</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
+      <td>56.55%</td>
+      <td>37.88%</td>
+      <td>53.26%</td>
+      <td>27.99%</td>
     </tr>
     <tr>
       <td>tri2b</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
+      <td>50.64%</td>
+      <td>32.85%</td>
+      <td>47.38%</td>
+      <td>21.89%</td>
     </tr>
     <tr>
       <td>tri3b</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
+      <td>50.52%</td>
+      <td>32.70%</td>
+      <td>47.06%</td>
+      <td>21.67%</td>
     </tr>
     <tr>
       <td>tri4b</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
+      <td>46.81%</td>
+      <td>29.47%</td>
+      <td>43.18%</td>
+      <td>18.05%</td>
     </tr>
     <tr>
       <td>tdnn-chain</td>
@@ -109,8 +109,8 @@ Here is final `test` set result evaluated on `tdnn-chain`
   <thead>
     <tr>
       <th rowspan="2">Model</th>
-      <th colspan="2">dev</th>
-      <th colspan="2">dev-unique</th>
+      <th colspan="2">test</th>
+      <th colspan="2">test-unique</th>
     </tr>
     <tr>
       <th>WER</th>
