@@ -88,17 +88,17 @@ Here are some experiment results evaluated on dev set:
     </tr>
     <tr>
       <td>tdnn-chain</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
+      <td>29.15%</td>
+      <td>14.96%</td>
+      <td>30.84%</td>
+      <td>8.75%</td>
     </tr>
     <tr>
       <td>tdnn-chain-online</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
+      <td>29.02%</td>
+      <td>14.64%</td>
+      <td>30.41%</td>
+      <td>8.28%</td>
     </tr>
   </tbody>
 </table>
@@ -121,11 +121,11 @@ Here is final `test` set result evaluated on `tdnn-chain`
   </thead>
   <tbody>
     <tr>
-      <td>mono</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
-      <td>TBD%</td>
+      <td>tdnn-chain-online</td>
+      <td>9.71%</td>
+      <td>3.12%</td>
+      <td>23.04%</td>
+      <td>7.57%</td>
     </tr>
   </tbody>
 </table> 
