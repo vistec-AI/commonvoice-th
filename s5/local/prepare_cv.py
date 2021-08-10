@@ -69,11 +69,15 @@ def prepare_lexicon(data_path: str) -> None:
 def main(args: Namespace) -> None:
     train = pd.read_csv(args.labels_path+"/train.tsv", delimiter="\t")
     dev = pd.read_csv(args.labels_path+"/dev.tsv", delimiter="\t")
+    dev_unique = pd.read_csv(args.labels_path+"/dev-unique.tsv", delimiter="\t")
     test = pd.read_csv(args.labels_path+"/test.tsv", delimiter="\t")
+    test_unique = pd.read_csv(args.labels_path+"/test-unique.tsv", delimiter="\t")
 
     format_df(train, args.data_path, "train", args.cv_path)
     format_df(dev, args.data_path, "dev", args.cv_path)
+    format_df(dev_unique, args.data_path, "dev_unique", args.cv_path)
     format_df(test, args.data_path, "test", args.cv_path)
+    format_df(test_unique, args.data_path, "test_unique", args.cv_path)
 
     prepare_lexicon(args.data_path)
 

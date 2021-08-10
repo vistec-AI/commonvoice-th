@@ -18,7 +18,7 @@ set -euo pipefail
 stage=0
 decode_nj=$(nproc)
 train_set=train
-test_sets="dev test"
+test_sets="dev dev_unique test test_unique"
 gmm=tri4b
 nnet3_affix=
 

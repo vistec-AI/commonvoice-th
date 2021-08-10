@@ -30,7 +30,7 @@ fi
 
 if [ $stage -le 1 ]; then
   # validate prepared data
-  for part in train dev test; do
+  for part in train dev dev_unique test test_unique; do
     utils/validate_data_dir.sh --no-feats data/$part || { echo "Fail validating $part"; exit 1; }
   done
 
@@ -43,7 +43,7 @@ fi
 
 if [ $stage -le 2 ]; then
   # create MFCC feats
-  for part in train dev test; do
+  for part in train dev dev_unique test test_unique; do
     steps/make_mfcc_pitch.sh --cmd "$train_cmd" --nj $njobs data/$part exp/make_mfcc/$part $mfccdir || { echo "Error make MFCC features"; exit 1; }
     steps/compute_cmvn_stats.sh data/$part exp/make_mfcc/$part $mfccdir || { echo "Error computing CMVN"; exit 1; }
   done
@@ -61,9 +61,9 @@ if [ $stage -le 3 ]; then
     data/train data/lang exp/mono || { echo "Error training mono"; exit 1; };
   (
     utils/mkgraph.sh data/lang exp/mono exp/mono/graph || { echo "Error making graph for mono"; exit 1; }
-    for testset in dev; do
+    for testset in dev dev_unique; do
       steps/decode.sh --nj $njobs --cmd "$decode_cmd" exp/mono/graph \
-        data/dev exp/mono/decode_dev || { echo "Error decoding mono"; exit 1; }
+        data/$testset exp/mono/decode_$testset || { echo "Error decoding mono"; exit 1; }
     done
   )&
   steps/align_si.sh --boost-silence 1.25 --nj $njobs --cmd "$train_cmd" \
@@ -78,7 +78,7 @@ if [ $stage -le 4 ]; then
   # decode tri1
   (
     utils/mkgraph.sh data/lang exp/tri1 exp/tri1/graph || { echo "Error making graph for tri1"; exit 1; }
-    for testset in dev; do
+    for testset in dev dev_unique; do
       steps/decode.sh --nj $njobs --cmd "$decode_cmd" exp/tri1/graph \
         data/$testset exp/tri1/decode_$testset || { echo "Error decoding tri1"; exit 1; }
     done
@@ -97,7 +97,7 @@ if [ $stage -le 5 ]; then
   # decode LDA+MLTT
   utils/mkgraph.sh data/lang exp/tri2b exp/tri2b/graph || { echo "Error making graph for tri2b"; exit 1; }
   (
-    for testset in dev; do
+    for testset in dev dev_unique; do
     steps/decode.sh --nj $njobs --cmd "$decode_cmd" exp/tri2b/graph \
       data/$testset exp/tri2b/decode_$testset || { echo "Error decoding tri2b"; exit 1; }
     done
@@ -116,7 +116,7 @@ if [ $stage -le 6 ]; then
   # decode using the tri3b model
   (
     utils/mkgraph.sh data/lang exp/tri3b exp/tri3b/graph || { echo "Error making graph for tri3b"; exit 1; }
-    for testset in dev; do
+    for testset in dev dev_unique; do
       steps/decode_fmllr.sh --nj $njobs --cmd "$decode_cmd" \
         exp/tri3b/graph data/$testset exp/tri3b/decode_$testset || { echo "Error decoding tri3b"; exit 1; }
     done
@@ -137,7 +137,7 @@ if [ $stage -le 7 ]; then
   # decode using the tri4b model
   (
     utils/mkgraph.sh data/lang exp/tri4b exp/tri4b/graph || { echo "Error making graph for tri4b"; exit 1; }
-    for testset in dev; do
+    for testset in dev dev_unique; do
       steps/decode_fmllr.sh --nj $njobs --cmd "$decode_cmd" \
         exp/tri4b/graph data/$testset \
         exp/tri4b/decode_$testset || { echo "Error decoding tri4b"; exit 1; }
