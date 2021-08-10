@@ -35,9 +35,9 @@ $ ./run.sh --stage 0
 
 ## Experiment Results
 Here are some experiment results evaluated on dev set:
-|Model            |     dev    || dev-unique ||
+|Model            |:    dev    :|:dev-unique :|
+|^^               | WER  |  CER | WER  |  CER |
 |:----------------|:----:|:----:|:----:|:----:|
-|                 | WER  |  CER | WER  |  CER |
 |mono             |77.85%|49.43%| TBD% | TBD% |
 |tri1             |53.32%|28.26%| TBD% | TBD% |
 |tri2b            |47.81%|21.94%| TBD% | TBD% |
