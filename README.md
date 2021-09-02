@@ -160,7 +160,7 @@ Here is final `test` set result evaluated on `tdnn-chain`
       <td>-</td>
       <td>-</td>
       <td>21.86%</td>
-      <td>7.08%%</td>
+      <td>7.08%</td>
     </tr>
   </tbody>
 
