@@ -128,6 +128,44 @@ Here is final `test` set result evaluated on `tdnn-chain`
       <td>7.57%</td>
     </tr>
   </tbody>
+  <tbody>
+    <tr>
+      <td>airesearch/wav2vec2-xlsr-53-th</td>
+      <td>-</td>
+      <td>-</td>
+      <td>13.63</td>
+      <td>2.81%</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>Google Web Speech API</td>
+      <td>-</td>
+      <td>-</td>
+      <td>13.71%</td>
+      <td>7.36%</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <td>Microsoft Bing Search API</td>
+      <td>-</td>
+      <td>-</td>
+      <td>12.58%</td>
+      <td>5.01%</td>
+    </tr>
+  <tbody>
+    <tr>
+      <td>Amazon Transcribe</td>
+      <td>-</td>
+      <td>-</td>
+      <td>21.86%</td>
+      <td>7.08%%</td>
+    </tr>
+  </tbody>
+
+  </tbody>
+
 </table> 
 
 ## Author
