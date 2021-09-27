@@ -62,16 +62,16 @@ $ python3.8 inference.py --wav-path <path-to-wav>  # test it with test.wav
 We also provide a `fastapi` server that will allow user to transcribe their own audio file via RESTful API. To instantiate server, run this command **inside a docker shell**
 ```bash
 $ cd vosk-inference
-$ uvicorn server:app --reload
+$ uvicorn server:app --host 0.0.0.0 --reload
 ```
-Now, the server will instantiate at `http://localhost:5000`. To see if server is correctly instantiated, try to browse `http://localhost:8000/healthcheck`. If the webpage loaded then we are good to go!
+Now, the server will instantiate at `http://localhost:8000`. To see if server is correctly instantiated, try to browse `http://localhost:8000/healthcheck`. If the webpage loaded then we are good to go!
 
 #### API Endpoint
 The endpoint will be in form-data format where each file is attached to a form field named `audios`. See python example
 ```python
 import requests
 
-url = "localhost:5000/transcribe"
+url = "localhost:8000/transcribe"
 
 payload={}
 files=[
