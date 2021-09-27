@@ -46,14 +46,44 @@ $ unzip model.zip
 ### Run docker and test inference script
 To prevent dependencies problem, the Vosk inference python script must be run inside a docker image that we just built. First, let's initiate a docker
 ```bash
-$ docker run -it -v <path-to-repo>:/workspace --name <container-name> <build-docker-name> bash
+$ docker run -it -v <path-to-repo>:/workspace \
+                 --name <container-name> \
+                 -p 8000:8000 \
+                 <build-docker-name> bash
 ```
 Then, you will be attached to a linux terminal inside the container. To inference an audio file, run:
 ```bash
 $ cd vosk-inference
 $ python3.8 inference.py --wav-path <path-to-wav>  # test it with test.wav
 ```
-That's all! If you want to use it for your mock application, read the source code yourself :P
+**Note that audio file must be 16k samping rate and mono channel!**
+
+### Instaltiating Vosk Server to Processing audio files
+We also provide a `fastapi` server that will allow user to transcribe their own audio file via RESTful API. To instantiate server, run this command **inside a docker shell**
+```bash
+$ cd vosk-inference
+$ uvicorn server:app --reload
+```
+Now, the server will instantiate at `http://localhost:5000`. To see if server is correctly instantiated, try to browse `http://localhost:8000/healthcheck`. If the webpage loaded then we are good to go!
+
+#### API Endpoint
+The endpoint will be in form-data format where each file is attached to a form field named `audios`. See python example
+```python
+import requests
+
+url = "localhost:5000/transcribe"
+
+payload={}
+files=[
+    ('audios', (<file-name>, open(<file-path>, 'rb'), 'audio/wav')),
+    ...
+]
+headers = {}
+
+response = requests.request("POST", url, headers=headers, data=payload, files=files)
+
+print(response.text)
+```
 
 ## Online Decoding with WebRTC Protocol
 Read more at [this repository](https://github.com/danijel3/KaldiWebrtcServer). The provided repository contains an easy way to deploy Kaldi `tdnn-chain` model to webRTC server.

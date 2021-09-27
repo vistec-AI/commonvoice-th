@@ -39,4 +39,25 @@ RUN cd /root \
     && cd /root/vosk-api/python \
     && python3.8 setup.py install
 
+# install pip3.8
+RUN cd /root \
+    && yum install -y wget \
+    && wget https://bootstrap.pypa.io/get-pip.py \
+    && python3.8 get-pip.py \
+    && echo "export PATH=$PATH:/opt/_internal/cpython-3.8.12/bin" >> ~/.bash_profile \
+    && source ~/.bash_profile
+
+ENV PATH=$PATH:/opt/_internal/cpython-3.8.12/bin
+
+# install ffmpeg
+RUN yum install -y epel-release \
+    && rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro \
+    && rpm -Uvh http://li.nux.ro/download/nux/dextop/el6/x86_64/nux-dextop-release-0-2.el6.nux.noarch.rpm \
+    && yum install -y ffmpeg ffmpeg-dlevel
+
+RUN pip3.8 install fastapi \
+    aiofiles \
+    python-multipart \
+    uvicorn
+
 WORKDIR /workspace
