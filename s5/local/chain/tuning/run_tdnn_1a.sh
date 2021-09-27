@@ -22,6 +22,10 @@ test_sets="dev dev_unique test test_unique"
 gmm=tri4b
 nnet3_affix=
 
+use_gpu="wait"
+njob_init=1
+njob_final=1
+
 # The rest are configs specific to this script.  Most of the parameters
 # are just hardcoded at this level, in the commands below.
 affix=1a   # affix for the TDNN directory name
@@ -202,12 +206,12 @@ if [ $stage -le 14 ]; then
     --trainer.max-param-change=2.0 \
     --trainer.num-epochs=4 \
     --trainer.frames-per-iter=1500000 \
-    --trainer.optimization.num-jobs-initial=1 \
-    --trainer.optimization.num-jobs-final=1 \
+    --trainer.optimization.num-jobs-initial=$njob_init \
+    --trainer.optimization.num-jobs-final=$njob_final \
     --trainer.optimization.initial-effective-lrate=0.001 \
     --trainer.optimization.final-effective-lrate=0.0001 \
     --trainer.optimization.shrink-value=1.0 \
-    --trainer.num-chunk-per-minibatch=128 \
+    --trainer.num-chunk-per-minibatch=128,64 \
     --trainer.optimization.momentum=0.0 \
     --egs.chunk-width=$chunk_width \
     --egs.chunk-left-context=$chunk_left_context \
@@ -217,7 +221,7 @@ if [ $stage -le 14 ]; then
     --egs.dir="$common_egs_dir" \
     --egs.opts="--frames-overlap-per-eg 0" \
     --cleanup.remove-egs=$remove_egs \
-    --use-gpu=true \
+    --use-gpu=$use_gpu \
     --reporting.email="$reporting_email" \
     --feat-dir=$train_data_dir \
     --tree-dir=$tree_dir \

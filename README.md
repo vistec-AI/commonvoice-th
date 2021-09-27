@@ -10,14 +10,15 @@ We will need a commonvoice corpus for training ASR Engine. We are using Commonvo
 ### Downloading SRILM
 Before building docker, SRILM file need to be downloaded. You can download it from [here](http://www.speech.sri.com/projects/srilm/download.html). Once the file is downloaded, remove version name (e.g. from `srilm-1.7.3.tar.gz` to `srilm.tar.gz` and place it inside `docker` directory. Your `docker` directory should contains 2 files: `dockerfile`, and `srilm.tar.gz`.
 
-### Building Docker
-Once you have prepared SRILM file, you are ready to build docker for training this recipe. This docker automatically install project's dependendies and stored it in a container. To build a container, run:
+## Building Docker for Training with Kaldi
+Once you have prepared SRILM file, you are ready to build docker for training this recipe. This docker automatically install project's dependendies and stored it in an image. To build a docker image, run:
 ```bash
-$ docker build -t <docker-name> .
+$ cd docker
+$ docker build -t <docker-name> kaldi
 ```
 
 ### Run docker and attach command line
-Once the container had been built, all you have to do is interactively attach to its bash terminal via the following command:
+Once the image had been built, all you have to do is interactively attach to its bash terminal via the following command:
 ```bash
 $ docker run -it -v <path-to-repo>:/opt/kaldi/egs/commonvoice-th \
                  -v <path-to-repo>/labels:/mnt/labels \
@@ -26,12 +27,44 @@ $ docker run -it -v <path-to-repo>:/opt/kaldi/egs/commonvoice-th \
 ```
 Once you finish this step, you should be in a docker container's bash terminal now
 
+## Building Docker for inferencing via Vosk
+We also provide an example of how to inference a trained kaldi model using Vosk. Berore we begin, let's build Vosk docker image:
+```bash
+$ cd docker
+$ docker build -t <docker-name> vosk-inference
+```
+
+### Preparing Directories for Vosk Inferencing
+The first step is to download provided Vosk model format on this github's release. Unzip it to `vosk-inference` directory. Or you can just follow this code.
+```
+$ yum install -y wget
+$ cd vosk-inference
+$ wget https://github.com/vistec-AI/commonvoice-th/releases/download/vosk-v1/model.zip; unzip model.zip
+```
+
+### Run docker and test inference script
+To prevent dependencies problem, the Vosk inference python script must be run inside a docker image that we just built. First, let's initiate a docker
+```bash
+$ docker run -it -v <path-to-repo>:/workspace --name <container-name> <build-docker-name> bash
+```
+Then, you will be attached to a linux terminal inside the container. To inference an audio file, run:
+```bash
+$ cd vosk-inference
+$ python3.8 inference.py --wav-path <path-to-wav>
+```
+That's all! If you want to use it for your mock application, read the source code yourself :P
+
+## Online Decoding with WebRTC Protocol
+Read more at [this repository](https://github.com/danijel3/KaldiWebrtcServer). The provided repository contains an easy way to deploy Kaldi `tdnn-chain` model to webRTC server.
+
+
 ## Usage
 To run the training pipeline, go to recipe directory and run `run.sh` script
 ```bash
 $ cd /opt/kaldi/egs/commonvoice-th/s5
 $ ./run.sh --stage 0
 ```
+
 
 ## Experiment Results
 Here are some experiment results evaluated on dev set:
