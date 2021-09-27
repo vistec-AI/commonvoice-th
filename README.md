@@ -32,14 +32,15 @@ We also provide an example of how to inference a trained kaldi model using Vosk.
 ```bash
 $ cd docker
 $ docker build -t <docker-name> vosk-inference
+$ cd ..  # back to root directory
 ```
 
 ### Preparing Directories for Vosk Inferencing
 The first step is to download provided Vosk model format on this github's release. Unzip it to `vosk-inference` directory. Or you can just follow this code.
 ```
-$ yum install -y wget
 $ cd vosk-inference
-$ wget https://github.com/vistec-AI/commonvoice-th/releases/download/vosk-v1/model.zip; unzip model.zip
+$ wget https://github.com/vistec-AI/commonvoice-th/releases/download/vosk-v1/model.zip
+$ unzip model.zip
 ```
 
 ### Run docker and test inference script
@@ -50,7 +51,7 @@ $ docker run -it -v <path-to-repo>:/workspace --name <container-name> <build-doc
 Then, you will be attached to a linux terminal inside the container. To inference an audio file, run:
 ```bash
 $ cd vosk-inference
-$ python3.8 inference.py --wav-path <path-to-wav>
+$ python3.8 inference.py --wav-path <path-to-wav>  # test it with test.wav
 ```
 That's all! If you want to use it for your mock application, read the source code yourself :P
 
