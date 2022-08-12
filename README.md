@@ -96,6 +96,15 @@ $ cd /opt/kaldi/egs/commonvoice-th/s5
 $ ./run.sh --stage 0
 ```
 
+## How to test
+To get WER and CER from testset, run the script.
+```bash
+$ cd /opt/kaldi/egs/commonvoice-th/s5
+$ steps/decode.sh --nj 4 exp/{model}/graph data/test exp/{model}/decode_test
+$ local/score.sh data/test exp/{model}/graph exp/{model}/decode_test
+$ more exp/{model}/decode_test/scoring_kaldi/best_wer
+$ more exp/{model}/decode_test/scoring_kaldi/best_cer
+```
 
 ## Experiment Results
 Here are some experiment results evaluated on dev set:
